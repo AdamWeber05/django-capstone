@@ -54,10 +54,9 @@ using https://tidewatercsce490.pythonanywhere.com/solookup/
 testfile in /Selenium Test
 
 ## Our team members
+-Adam Weber
 -Jacob Carter
 -Scott Craig
 -Jake Fuller
 -Zachary Kilgore
 -Lam Nguyen
--Thomas Scampini
--Adam Weber
