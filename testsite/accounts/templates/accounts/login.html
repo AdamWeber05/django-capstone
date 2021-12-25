@@ -1,0 +1,21 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+{% block content %}
+<div id="login">
+    <div class="login_header">
+        <h1>LOGIN</h1>
+    </div>
+
+    <form class="form-horizontal" name="LoginForm" action="/accounts/login/" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Login" id="login_button"> <!-- Login Button -->
+
+        <div class = "reset-pass">
+            <a href="/accounts/signup/"><p>Signup</p></a>
+        </div>
+    </form>
+    
+</div>
+{% endblock %}
+

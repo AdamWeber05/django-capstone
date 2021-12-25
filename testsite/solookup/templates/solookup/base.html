@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <style>
+      body {
+        background: url(" {% static 'images/TW_bg_2.jpg' %}") no-repeat center center fixed;
+        background-size: cover;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'solookup/main.css' %}">
+
+    <meta charset="utf-8">
+    
+  </head>
+  <body>
+    <div class="header">
+      <a href="/solookup/" class="logo"><img src="{% static 'images/tidewater_logo.png' %}"></a>
+      <a href="https://www.tidewaterboats.com"><p>Main Company Website</p></a>
+      <div class="header-right">
+        {% if user.is_authenticated %} <!-- If user is logged in, give option to logout-->
+          <form class="logout-link" action="/accounts/logout/"method="post">
+            {% csrf_token %}
+            <a href="/excel/export"><p>Export Production Floor<br/>(Downloads Excel File)</p></a>
+            <a href="/solookup/all/"><p>View All Boats</p></a>
+            <button type="submit">Logout</button>
+          </form>
+        {% else %} <!-- Otherwise, make them login -->
+          <a href="/accounts/login/"><h1>Login</h1></a>
+        {% endif %}
+      </div>
+    </div>
+    {% block content %}{% endblock %}
+  </body>
+</html>

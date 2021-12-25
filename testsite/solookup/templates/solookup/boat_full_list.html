@@ -1,0 +1,46 @@
+{% extends "solookup/base.html" %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<div class="filterBox">
+    <h1>Filter Boats</h1>
+    <form method="GET">
+        {{ filter.form }}
+        <button type="submit">Search</button>  
+    </form>
+</div>
+
+
+<div class="tableBox">
+    <h1>All Boats Currently in Production</h1>
+    <table>
+    <thead>  
+        <tr>
+            <th>SO Number</th>
+            <th>Boat Model</th>
+            <th>Current Step</th>
+        </tr>
+    </thead>
+    {% for boat in filter.qs %}
+    <tbody>
+        <tr>
+            <td><a href="/solookup/{{boat.so_num}}/">{{boat.so_num}}</a></td>
+            <td><a href="/solookup/{{boat.so_num}}/">{{boat.model}}</a></td>
+            <td><a href="/solookup/{{boat.so_num}}/">{{boat.current_step}}</a></td>
+        </tr>
+    </tbody>
+    {% empty %}
+    <p>No boats match the following filters.</p>
+    <a href="/solookup/"><h2>Return home</h2></a>
+    {% endfor %}
+    </table>
+</div>
+{% else %}
+<div class = "account-handler">
+    <h1>You are not authorized to view this page</h1>
+    <a href="/accounts/login/"><h2>Please Login,</h2></a>
+    <a href="/accounts/signup/"><h2>or Sign Up</h2></a>
+</div>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+{% block content %}
+<ul>
+    {% for account in object_list %}
+    <li>
+        {{account.username}}, {{account.password}}, {{account.userType}}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock content %}

@@ -1,0 +1,630 @@
+{% extends "solookup/base.html" %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+  {% if boat.current_step != "Shipped" %}
+    
+    <div class="container">
+        <div class="boat_editing_header">
+          <h1>YOU ARE EDITING</h1>
+          <p class="boat_info">SO# - {{ boat.so_num }}<br>MODEL - {{ boat.model }}<br>MOTOR - {{ boat.motor }}<br>DEALER - {{ boat.dealer_name }}</p>
+        </div>
+        <div class = "Welcome_Message">
+          <a href="/solookup/{{ boat.so_num }}/generate-PDF/" target="_blank" class="btn btn-sm btn-success"><h1>Generate Pdf</h1></a>
+        </div>
+        <!-- <img src= {{ boat.qr_code.url }} class="QR_center"></img> -->
+        <div class="step_update_and_photo">
+          <div class="dropdown">
+            <p>Current Step: {{ boat.current_step }}</p>
+            <!-- <h6>Update Step:</h6> -->
+            <!-- <button class="dropbtn">Choose Next Step</button> -->
+            {% if boat.current_step == "Gel" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">Gel</option> -->
+                  <option value="skin">Skin</option>
+                  <option value="bulk">Bulk</option>
+                  <option value="floor">Floor</option>
+                  <option value="box">Box</option>
+                  <option value="pull">Pull</option>
+                  <option value="grind">Grind</option>
+                  <option value="cut">Cut</option>
+                  <option value="patch">Patch</option>
+                  <option value="hw">Hardware</option>
+                  <option value="cap">Cap</option>
+                  <option value="foam">Foam</option>
+                  <option value="con">Con</option>
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Skin" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <option value="bulk">Bulk</option>
+                  <option value="floor">Floor</option>
+                  <option value="box">Box</option>
+                  <option value="pull">Pull</option>
+                  <option value="grind">Grind</option>
+                  <option value="cut">Cut</option>
+                  <option value="patch">Patch</option>
+                  <option value="hw">Hardware</option>
+                  <option value="cap">Cap</option>
+                  <option value="foam">Foam</option>
+                  <option value="con">Con</option>
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Bulk" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <option value="floor">Floor</option>
+                  <option value="box">Box</option>
+                  <option value="pull">Pull</option>
+                  <option value="grind">Grind</option>
+                  <option value="cut">Cut</option>
+                  <option value="patch">Patch</option>
+                  <option value="hw">Hardware</option>
+                  <option value="cap">Cap</option>
+                  <option value="foam">Foam</option>
+                  <option value="con">Con</option>
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Floor" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <option value="box">Box</option>
+                  <option value="pull">Pull</option>
+                  <option value="grind">Grind</option>
+                  <option value="cut">Cut</option>
+                  <option value="patch">Patch</option>
+                  <option value="hw">Hardware</option>
+                  <option value="cap">Cap</option>
+                  <option value="foam">Foam</option>
+                  <option value="con">Con</option>
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Nox" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <!-- <option value="box">box</option> -->
+                  <option value="pull">Pull</option>
+                  <option value="grind">Grind</option>
+                  <option value="cut">Cut</option>
+                  <option value="patch">Patch</option>
+                  <option value="hw">Hardware</option>
+                  <option value="cap">Cap</option>
+                  <option value="foam">Foam</option>
+                  <option value="con">Con</option>
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Pull" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <!-- <option value="box">box</option> -->
+                  <!-- <option value="pull">pull</option> -->
+                  <option value="grind">Grind</option>
+                  <option value="cut">Cut</option>
+                  <option value="patch">Patch</option>
+                  <option value="hw">Hardware</option>
+                  <option value="cap">Cap</option>
+                  <option value="foam">Foam</option>
+                  <option value="con">Con</option>
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Grind" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <!-- <option value="box">box</option> -->
+                  <!-- <option value="pull">pull</option> -->
+                  <!-- <option value="grind">grind</option> -->
+                  <option value="cut">Cut</option>
+                  <option value="patch">Patch</option>
+                  <option value="hw">Hardware</option>
+                  <option value="cap">Cap</option>
+                  <option value="foam">Foam</option>
+                  <option value="con">Con</option>
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Cut" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <!-- <option value="box">box</option> -->
+                  <!-- <option value="pull">pull</option> -->
+                  <!-- <option value="grind">grind</option> -->
+                  <!-- <option value="cut">cut</option> -->
+                  <option value="patch">Patch</option>
+                  <option value="hw">Hardware</option>
+                  <option value="cap">Cap</option>
+                  <option value="foam">Foam</option>
+                  <option value="con">Con</option>
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Patch" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <!-- <option value="box">box</option> -->
+                  <!-- <option value="pull">pull</option> -->
+                  <!-- <option value="grind">grind</option> -->
+                  <!-- <option value="cut">cut</option> -->
+                  <!-- <option value="patch">patch</option> -->
+                  <option value="hw">Hardware</option>
+                  <option value="cap">Cap</option>
+                  <option value="foam">Foam</option>
+                  <option value="con">Con</option>
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Hardware" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <!-- <option value="box">box</option> -->
+                  <!-- <option value="pull">pull</option> -->
+                  <!-- <option value="grind">grind</option> -->
+                  <!-- <option value="cut">cut</option> -->
+                  <!-- <option value="patch">patch</option> -->
+                  <!-- <option value="hw">hw</option> -->
+                  <option value="cap">Cap</option>
+                  <option value="foam">Foam</option>
+                  <option value="con">Con</option>
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Cap" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <!-- <option value="box">box</option> -->
+                  <!-- <option value="pull">pull</option> -->
+                  <!-- <option value="grind">grind</option> -->
+                  <!-- <option value="cut">cut</option> -->
+                  <!-- <option value="patch">patch</option> -->
+                  <!-- <option value="hw">hw</option> -->
+                  <!-- <option value="cap">cap</option> -->
+                  <option value="foam">Foam</option>
+                  <option value="con">Con</option>
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Foam" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <!-- <option value="box">box</option> -->
+                  <!-- <option value="pull">pull</option> -->
+                  <!-- <option value="grind">grind</option> -->
+                  <!-- <option value="cut">cut</option> -->
+                  <!-- <option value="patch">patch</option> -->
+                  <!-- <option value="hw">hw</option> -->
+                  <!-- <option value="cap">cap</option> -->
+                  <!-- <option value="foam">foam</option> -->
+                  <option value="con">Con</option>
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Con" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <!-- <option value="box">box</option> -->
+                  <!-- <option value="pull">pull</option> -->
+                  <!-- <option value="grind">grind</option> -->
+                  <!-- <option value="cut">cut</option> -->
+                  <!-- <option value="patch">patch</option> -->
+                  <!-- <option value="hw">hw</option> -->
+                  <!-- <option value="cap">cap</option> -->
+                  <!-- <option value="foam">foam</option> -->
+                  <!-- <option value="con">con</option> -->
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Motor" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <!-- <option value="box">box</option> -->
+                  <!-- <option value="pull">pull</option> -->
+                  <!-- <option value="grind">grind</option> -->
+                  <!-- <option value="cut">cut</option> -->
+                  <!-- <option value="patch">patch</option> -->
+                  <!-- <option value="hw">hw</option> -->
+                  <!-- <option value="cap">cap</option> -->
+                  <!-- <option value="foam">foam</option> -->
+                  <!-- <option value="con">con</option> -->
+                  <!-- <option value="mtr">mtr</option> -->
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Rig" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <!-- <option value="box">box</option> -->
+                  <!-- <option value="pull">pull</option> -->
+                  <!-- <option value="grind">grind</option> -->
+                  <!-- <option value="cut">cut</option> -->
+                  <!-- <option value="patch">patch</option> -->
+                  <!-- <option value="hw">hw</option> -->
+                  <!-- <option value="cap">cap</option> -->
+                  <!-- <option value="foam">foam</option> -->
+                  <!-- <option value="con">con</option> -->
+                  <!-- <option value="mtr">mtr</option> -->
+                  <!-- <option value="rig">rig</option> -->
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Upholstery" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <!-- <option value="box">box</option> -->
+                  <!-- <option value="pull">pull</option> -->
+                  <!-- <option value="grind">grind</option> -->
+                  <!-- <option value="cut">cut</option> -->
+                  <!-- <option value="patch">patch</option> -->
+                  <!-- <option value="hw">hw</option> -->
+                  <!-- <option value="cap">cap</option> -->
+                  <!-- <option value="foam">foam</option> -->
+                  <!-- <option value="con">con</option> -->
+                  <!-- <option value="mtr">mtr</option> -->
+                  <!-- <option value="rig">rig</option> -->
+                  <!-- <option value="uph">uph</option> -->
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "CC" %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <!-- <option value="gel">gel</option>
+                  <option value="skin">skin</option> -->
+                  <!-- <option value="bulk">bulk</option> -->
+                  <!-- <option value="floor">floor</option> -->
+                  <!-- <option value="box">box</option> -->
+                  <!-- <option value="pull">pull</option> -->
+                  <!-- <option value="grind">grind</option> -->
+                  <!-- <option value="cut">cut</option> -->
+                  <!-- <option value="patch">patch</option> -->
+                  <!-- <option value="hw">hw</option> -->
+                  <!-- <option value="cap">cap</option> -->
+                  <!-- <option value="foam">foam</option> -->
+                  <!-- <option value="con">con</option> -->
+                  <!-- <option value="mtr">mtr</option> -->
+                  <!-- <option value="rig">rig</option> -->
+                  <!-- <option value="uph">uph</option> -->
+                  <!-- <option value="cc">cap</option> -->
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% elif boat.current_step == "Inspection" %}
+              <p>This boat is awaiting inspection. Please see an admin to close the boat.</p>
+            {% else %}
+              <form action="update/" method="POST" >
+                <select name="Production_Steps">
+                  <option value="none" selected="selected"> -- Update Step --
+                  <option value="gel">Gel</option>
+                  <option value="skin">Skin</option>
+                  <option value="bulk">Bulk</option>
+                  <option value="floor">Floor</option>
+                  <option value="box">Box</option>
+                  <option value="pull">Pull</option>
+                  <option value="grind">Grind</option>
+                  <option value="cut">Cut</option>
+                  <option value="patch">Patch</option>
+                  <option value="hw">Hardware</option>
+                  <option value="cap">Cap</option>
+                  <option value="foam">Foam</option>
+                  <option value="con">Con</option>
+                  <option value="mtr">Motor</option>
+                  <option value="rig">Rig</option>
+                  <option value="uph">Upholstery</option>
+                  <option value="cc">CC</option>
+                  <option value="insp">Inspection</option>
+                  <option value="ship">Shipped</option>
+                </select>
+                {% csrf_token %}
+                <input type="submit" value="OK">
+              </form>
+            {% endif %}
+          </div>
+          {% if boat.model == "180-CC" %}
+            <img src="{% static 'images/Centers/CCs/180.jpg' %}" alt="180 CC">
+          {% elif boat.model == "198-CC" %}
+            <img src="{% static 'images/Centers/CCs/198.jpg' %}" alt="198 CC">
+          {% elif boat.model == "210-CC" %}
+            <img src="{% static 'images/Centers/CCs/210.jpg' %}" alt="210 CC">
+          {% elif boat.model == "220-CC" %}
+            <img src="{% static 'images/Centers/CCs/220.jpg' %}" alt="220 CC">
+          {% elif boat.model == "232-CC" %}
+            <img src="{% static 'images/Centers/CCs/232.jpg' %}" alt="232 CC">
+          {% elif boat.model == "252-CC" %}
+            <img src="{% static 'images/Centers/CCs/252.jpg' %}" alt="252 CC">
+          {% elif boat.model == "256-CC" %}
+            <img src="{% static 'images/Centers/CCs/256.jpg' %}" alt="256 CC">
+          {% elif boat.model == "272-CC" %}
+            <img src="{% static 'images/Centers/CCs/272.jpg' %}" alt="272 CC">
+          {% elif boat.model == "280-CC" %}
+            <img src="{% static 'images/Centers/CCs/280.jpg' %}" alt="280 CC">
+          {% elif boat.model == "292-CC" %}
+            <img src="{% static 'images/Centers/CCs/292.jpg' %}" alt="292 CC">
+          {% elif boat.model == "320-CC" %}
+            <img src="{% static 'images/Centers/CCs/320.jpg' %}" alt="320 CC">
+          {% elif boat.model == "210-LXF" %}
+            <img src="{% static 'images/Centers/LXF/210.jpg' %}" alt="210 LXF">
+          {% elif boat.model == "220-LXF" %}
+            <img src="{% static 'images/Centers/LXF/220.jpg' %}" alt="220 LXF">
+          {% elif boat.model == "232-LXF" %}
+            <img src="{% static 'images/Centers/LXF/232.jpg' %}" alt="232 LXF">
+          {% elif boat.model == "256-LXF" %}
+            <img src="{% static 'images/Centers/LXF/256.jpg' %}" alt="256 LXF">
+          {% elif boat.model == "1910-Bay" %}
+            <img src="{% static 'images/Bays/1910.jpg' %}" alt="1910 Bay">
+          {% elif boat.model == "2110-Bay" %}
+            <img src="{% static 'images/Bays/2210.jpg' %}" alt="2110 Bay">
+          {% elif boat.model == "2110T-Bay" %}
+            <img src="{% static 'images/Bays/2210_T.jpg' %}" alt="2110 Bay Tunnel">  
+          {% elif boat.model == "2410-Bay" %}
+            <img src="{% static 'images/Bays/2410.jpg' %}" alt="2410 Bay">
+          {% elif boat.model == "2210-CB" %}
+            <img src="{% static 'images/Bays/2210_CB.jpg' %}" alt="2210 Center Bay">
+          {% elif boat.model == "2300-CB" %}
+            <img src="{% static 'images/Bays/2300_CB.jpg' %}" alt="2300 Center Bay">
+          {% elif boat.model == "2500-CB" %}
+            <img src="{% static 'images/Bays/2500_CB.jpg' %}" alt="2500 Center Bay">
+          {% elif boat.model == "2700-CB" %}
+            <img src="{% static 'images/Bays/2700_CB.jpg' %}" alt="2700 Center Bay">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    </div>
+  {% else %}
+    <div class ="container">
+      <div class="boat_editing_header">
+        <h1>THIS BOAT HAS BEEN SHIPPED</h1>
+        <p class="boat_info">SO# - {{ boat.so_num }}<br>MODEL - {{ boat.model }}<br>MOTOR - {{ boat.motor }}<br>DEALER - {{ boat.dealer_name }}</p>
+      </div>
+      <div class = "Welcome_Message">
+        <a href="/solookup/{{ boat.so_num }}/generate-PDF/" target="_blank" class="btn btn-sm btn-success"><h1>Generate Pdf</h1></a>
+      </div>
+      <div class="step_update_and_photo">
+        {% if boat.model == "180-CC" %}
+        <img src="{% static 'images/Centers/CCs/180.jpg' %}" alt="180 CC">
+      {% elif boat.model == "198-CC" %}
+        <img src="{% static 'images/Centers/CCs/198.jpg' %}" alt="198 CC">
+      {% elif boat.model == "210-CC" %}
+        <img src="{% static 'images/Centers/CCs/210.jpg' %}" alt="210 CC">
+      {% elif boat.model == "220-CC" %}
+        <img src="{% static 'images/Centers/CCs/220.jpg' %}" alt="220 CC">
+      {% elif boat.model == "232-CC" %}
+        <img src="{% static 'images/Centers/CCs/232.jpg' %}" alt="232 CC">
+      {% elif boat.model == "252-CC" %}
+        <img src="{% static 'images/Centers/CCs/252.jpg' %}" alt="252 CC">
+      {% elif boat.model == "256-CC" %}
+        <img src="{% static 'images/Centers/CCs/256.jpg' %}" alt="256 CC">
+      {% elif boat.model == "272-CC" %}
+        <img src="{% static 'images/Centers/CCs/272.jpg' %}" alt="272 CC">
+      {% elif boat.model == "280-CC" %}
+        <img src="{% static 'images/Centers/CCs/280.jpg' %}" alt="280 CC">
+      {% elif boat.model == "292-CC" %}
+        <img src="{% static 'images/Centers/CCs/292.jpg' %}" alt="292 CC">
+      {% elif boat.model == "320-CC" %}
+        <img src="{% static 'images/Centers/CCs/320.jpg' %}" alt="320 CC">
+      {% elif boat.model == "210-LXF" %}
+        <img src="{% static 'images/Centers/LXF/210.jpg' %}" alt="210 LXF">
+      {% elif boat.model == "220-LXF" %}
+        <img src="{% static 'images/Centers/LXF/220.jpg' %}" alt="220 LXF">
+      {% elif boat.model == "232-LXF" %}
+        <img src="{% static 'images/Centers/LXF/232.jpg' %}" alt="232 LXF">
+      {% elif boat.model == "256-LXF" %}
+        <img src="{% static 'images/Centers/LXF/256.jpg' %}" alt="256 LXF">
+      {% elif boat.model == "1910-Bay" %}
+        <img src="{% static 'images/Bays/1910.jpg' %}" alt="1910 Bay">
+      {% elif boat.model == "2110-Bay" %}
+        <img src="{% static 'images/Bays/2210.jpg' %}" alt="2110 Bay">
+      {% elif boat.model == "2110T-Bay" %}
+        <img src="{% static 'images/Bays/2210_T.jpg' %}" alt="2110 Bay Tunnel">  
+      {% elif boat.model == "2410-Bay" %}
+        <img src="{% static 'images/Bays/2410.jpg' %}" alt="2410 Bay">
+      {% elif boat.model == "2210-CB" %}
+        <img src="{% static 'images/Bays/2210_CB.jpg' %}" alt="2210 Center Bay">
+      {% elif boat.model == "2300-CB" %}
+        <img src="{% static 'images/Bays/2300_CB.jpg' %}" alt="2300 Center Bay">
+      {% elif boat.model == "2500-CB" %}
+        <img src="{% static 'images/Bays/2500_CB.jpg' %}" alt="2500 Center Bay">
+      {% elif boat.model == "2700-CB" %}
+        <img src="{% static 'images/Bays/2700_CB.jpg' %}" alt="2700 Center Bay">
+      {% endif %}
+      </div>
+    </div>
+    
+  {% endif %}
+{% else %}
+  <div class = "account-handler">
+      <h1>You are not authorized to view this page</h1>
+      <a href="/accounts/login/"><h2>Please Login,</h2></a>
+      <a href="/accounts/signup/"><h2>or Sign Up</h2></a>
+  </div>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,110 @@
+{
+  "id": "0b9373d2-ec7d-46a5-90b8-780352e6129d",
+  "version": "2.0",
+  "name": "TideWater Behavior Test",
+  "url": "https://tidewatercsce490.pythonanywhere.com",
+  "tests": [{
+    "id": "e91524b6-4d7c-4386-a407-418305416c8c",
+    "name": "Login",
+    "commands": [{
+      "id": "3f463411-2d71-4a12-b0b2-8cef3c48e85b",
+      "comment": "",
+      "command": "open",
+      "target": "/solookup/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4ebe6255-dd8d-4694-930e-33eb09f8f141",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1440x1119",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c58cb9cc-41f1-414d-a7fa-b3f62d545a07",
+      "comment": "",
+      "command": "click",
+      "target": "css=.account-handler > a:nth-child(1) > h1",
+      "targets": [
+        ["css=.account-handler > a:nth-child(1) > h1", "css:finder"],
+        ["xpath=//div[2]/div/div/a/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Please log in.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "198210df-3a5e-44cd-a3c3-bff47f1bed4d",
+      "comment": "",
+      "command": "click",
+      "target": "name=LoginForm",
+      "targets": [
+        ["name=LoginForm", "name"],
+        ["css=.form-horizontal", "css:finder"],
+        ["xpath=//form[@name='LoginForm']", "xpath:attributes"],
+        ["xpath=//div[@id='login']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4de15fe8-54cc-4b44-a989-0b26723577ef",
+      "comment": "",
+      "command": "type",
+      "target": "id=id_password",
+      "targets": [
+        ["id=id_password", "id"],
+        ["name=password", "name"],
+        ["css=#id_password", "css:finder"],
+        ["xpath=//input[@id='id_password']", "xpath:attributes"],
+        ["xpath=//div[@id='login']/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "RAWRbeast1"
+    }, {
+      "id": "6989739a-d155-430c-bcb0-f964045818a5",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(6)",
+      "targets": [
+        ["css=input:nth-child(6)", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//div[@id='login']/form/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "16edee57-8023-4503-be77-1eac6fa62fb9",
+      "comment": "",
+      "command": "click",
+      "target": "name=LoginForm",
+      "targets": [
+        ["name=LoginForm", "name"],
+        ["css=.form-horizontal", "css:finder"],
+        ["xpath=//form[@name='LoginForm']", "xpath:attributes"],
+        ["xpath=//div[@id='login']/form", "xpath:idRelative"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4779f3b5-78fd-413f-ba0e-bbd271e92a2c",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(7)",
+      "targets": [
+        ["css=input:nth-child(7)", "css:finder"],
+        ["xpath=//input[@value='Login']", "xpath:attributes"],
+        ["xpath=//div[@id='login']/form/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "3a8696f0-06fa-4aaa-a0ad-926b46024cf6",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://tidewatercsce490.pythonanywhere.com/"],
+  "plugins": []
+}

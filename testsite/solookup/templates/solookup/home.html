@@ -1,0 +1,29 @@
+{% extends "solookup/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="Welcome_Message">
+  {% if user.is_authenticated %} <!-- User is signed in, greet them-->
+    <h1>Welcome, {{user.get_username}}</h1>
+    <a href="/solookup/newboat/"><h2>Add a New Boat</h2></a> <!-- Only available for logged in users -->
+    <a href="/solookup/all/"><h2>View All Boats</h2></a>
+    <!-- Only accesible if logged in -->
+    
+    <div class="home_search">
+      <p>Search Boats by SO#</p><br>
+      <form action="{% url 'search_results' %}" method ='get'>
+        <input type="text" name="q" placeholder="S/0 number here">
+      </form>
+    </div>
+
+    {% else %} <!-- If user is not logged in-->
+    <!-- Deals with login/sign up-->
+    <div class = "account-handler">
+      <a href="/accounts/login/"><h2>Please Login,</h2></a>
+      <a href="/accounts/signup/"><h2>or Sign Up</h2></a>
+      <p>This website is for the Tidewater team's use in managing, checking, and creating spreadsheets of their production floor.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}

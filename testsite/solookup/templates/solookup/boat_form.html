@@ -1,0 +1,48 @@
+{% extends "solookup/base.html" %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<div class="tableBox">
+    <h1>New Boat Creation</h1>
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+    <table>
+    <form action="processing/" method="POST">
+        {% csrf_token %}
+        {% for field in form  %}
+        <tbody>
+            <tr>
+                <td> {{ field.label_tag }} </td>
+                <td>{{ field }} </td>
+            </tr>
+        </tbody>
+        {% endfor %}
+        <p>Anticipated Start Format: mm/dd/yyyy</p>
+        <input type="submit" value="Submit">
+    </form>
+    </table>
+</div>
+<!-- 
+
+<div class="form-content">
+    <h1>Please enter the Boat Details</h1>
+    <form action="processing/" method="POST">
+        {% csrf_token %}
+        {% for field in form  %}
+            {{ field.errors }}
+            <li> {{ field.label_tag }} {{ field }} </li> 
+        {% endfor %}
+        <p>Anticipated Start Format: mm/dd/yyyy</p>
+        <input type="submit" value="OK">
+    </form>
+</div> -->
+{% else %}
+    <div class = "account-handler">
+        <h1>You are not authorized to view this page</h1>
+        <a href="/accounts/login/"><h2>Please Login,</h2></a>
+        <a href="/accounts/signup/"><h2>or Sign Up</h2></a>
+    </div>
+{% endif %}
+{% endblock content %}
